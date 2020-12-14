@@ -13,6 +13,8 @@
         <li>Location: {{ f.location }}</li>
         <li>Block: {{ f.block }}</li>
       </ul>
+      <router-link v-bind:to="getEditUrl(f)">Edit</router-link><br />
+      <router-link v-bind:to="getDeleteUrl(f)">Delete</router-link>
     </div>
   </div>
 </template>
@@ -23,7 +25,7 @@ import axios from "axios";
 export default {
   created: async function () {
     let response = await axios.get(
-      "https://3000-f4533735-5e29-4c56-8fac-7d98824f41c1.ws-us03.gitpod.io/faults/"
+      "https://3000-f4533735-5e29-4c56-8fac-7d98824f41c1.ws-us03.gitpod.io/faults"
     );
     this.faults = response.data;
   },
@@ -36,9 +38,15 @@ export default {
   methods: {
     loadFaults: async function () {
       let response = await axios.get(
-        "https://3000-f4533735-5e29-4c56-8fac-7d98824f41c1.ws-us03.gitpod.io/faults/"
+        "https://3000-f4533735-5e29-4c56-8fac-7d98824f41c1.ws-us03.gitpod.io/faults"
       );
       this.faults = response.data;
+    },
+    getEditUrl(fault) {
+      return `/faults/${fault._id}/edit`;
+    },
+    getDeleteUrl(fault) {
+      return `/faults/${fault._id}/delete`;
     },
   },
   computed: {

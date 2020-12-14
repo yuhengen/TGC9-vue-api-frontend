@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <Faults />
+    <ul>
+      <li><router-link to="/faults">Faults</router-link></li>
+      <li><router-link to="/page2">Page2</router-link></li>
+      <li><router-link to="/faults/add">Add Fault</router-link></li>
+    </ul>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Faults from "./components/Faults.vue";
-
 export default {
   name: "App",
-  components: {
-    Faults,
-  },
+  components: {},
 };
 </script>
 
